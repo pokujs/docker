@@ -1,0 +1,29 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["ES2021"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "lib",
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": false,
+    "strict": true,
+    "alwaysStrict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "declaration": true,
+    "declarationDir": "lib",
+    "allowSyntheticDefaultImports": true
+  }
+}

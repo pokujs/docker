@@ -1,0 +1,48 @@
+name: '🔬 CI — Compatibility'
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ci_compatibility-deno.yml'
+      - 'src/**'
+      - 'test/**'
+      - 'package-lock.json'
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  deno:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        deno-version: ['v1.x', 'v2.x', 'canary']
+    name: Deno ${{ matrix.deno-version }}
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          check-latest: true
+          node-version: lts/*
+
+      - name: ➕ Actions - Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ matrix.deno-version }}
+
+      - name: ➕ Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-linux-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-linux-
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🔬 Deno ${{ matrix.deno-version }}
+        run: npm run test:deno

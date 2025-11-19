@@ -1,0 +1,42 @@
+name: '🔬 CI — Compatibility'
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ci_compatibility-nodejs.yml'
+      - 'src/**'
+      - 'test/**'
+      - 'package-lock.json'
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['16', '18', '20', '22', '24', '25']
+    name: Node.js ${{ matrix.node-version }}
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '${{ matrix.node-version }}'
+
+      - name: ➕ Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-linux-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-linux-
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🔬 Node ${{ matrix.node-version }}
+        run: npm test
