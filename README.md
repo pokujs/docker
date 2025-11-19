@@ -15,6 +15,10 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 🐳 **@poku/docker** is a minimal API to assist tests that require containers or tests that run inside containers.
 
+> [!IMPORTANT]
+>
+> WIP 🚧
+
 > [!TIP]
 >
 > It can be used both with or without [**Poku**](https://github.com/wellwelwel/poku) test runner.
