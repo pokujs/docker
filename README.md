@@ -22,3 +22,49 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 > [!TIP]
 >
 > It can be used both with or without [**Poku**](https://github.com/wellwelwel/poku) test runner.
+
+---
+
+## Using independently
+
+### compose
+
+```js
+import { docker } from '@pokujs/docker';
+
+const compose = docker.compose();
+
+// Starts the container(s)
+await compose.up();
+
+/**
+ * Tests come here 🧪
+ */
+
+// Stops the container(s)
+await compose.down();
+```
+
+### dockerfile
+
+```js
+import { docker } from '@pokujs/docker';
+
+const dockerfile = docker.dockerfile({
+  containerName: 'container-name',
+  tagName: 'image-name',
+});
+
+// Builds the image from the Dockerfile
+await dockerfile.build();
+
+// Starts the container
+await dockerfile.start();
+
+/**
+ * Tests come here 🧪
+ */
+
+// Stops and removes both the container and image
+await dockerfile.remove();
+```
