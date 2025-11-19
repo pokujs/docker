@@ -2,7 +2,7 @@
   "clean": true,
   "all": true,
   "include": ["src/**"],
-  "reporter": ["v8", "codecov", "console-details"],
+  "reporter": ["v8", "console-details"],
   "branches": 95,
   "statements": 95,
   "lines": 95,
