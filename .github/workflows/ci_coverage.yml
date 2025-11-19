@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - 'main'
+    paths:
+      - '.github/workflows/ci_coverage.yml'
+      - '.nycrc.json'
+      - 'src/**'
+      - 'test/**'
+      - 'package-lock.json'
+      - 'package.json'
   pull_request:
     paths:
       - '.github/workflows/ci_coverage.yml'
