@@ -7,11 +7,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wellwelwel/poku-docker.git"
+    "url": "git+https://github.com/wellwelwel/docker.git"
   },
   "homepage": "https://poku.io/docs/documentation/helpers/containers",
   "bugs": {
-    "url": "https://github.com/wellwelwel/poku-docker/issues"
+    "url": "https://github.com/wellwelwel/docker/issues"
   },
   "author": "https://github.com/wellwelwel",
   "funding": {

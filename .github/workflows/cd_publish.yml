@@ -10,6 +10,7 @@ permissions:
   contents: write
   pull-requests: write
   id-token: write
+  issues: write
 
 jobs:
   release-please:
@@ -22,9 +23,9 @@ jobs:
         uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          package-name: poku
+          package-name: '@pokujs/docker'
           changelog-path: 'CHANGELOG.md'
 
       - name: ➕ Actions - Checkout
